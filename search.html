@@ -1,0 +1,93 @@
+<!--Copyright 2009 Unique Windows Gadgets-->
+
+<html>
+    <head>
+    <title>searchRooms Gadget</title>
+    
+    <style type="text/css">
+		body
+		{
+            margin: 0px;
+			 padding: 0px;
+			 width:600px;
+			 background: #000000;
+            border:5px solid red;
+		}
+		.font
+		{
+			font-size: 9px;
+			font-weight: normal;
+			color: white;
+			font-family: Arial, Verdana, "SF Sans Serif";
+		}
+		
+		.fontblue
+		{
+			font-size: 9px;
+			font-weight: normal;
+			color: #63c6eb;
+			font-family: Arial, Verdana, "SF Sans Serif";
+		}
+			
+		a.special:link { color:#63c6eb; text-decoration:none}
+		a.special:visited { color:#63c6eb; text-decoration:none}
+		a.special:hover { color:#63c6eb; text-decoration:none; cursor:hand}
+		a.special:active { color:#63c6eb; text-decoration:none}
+		
+    </style>
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/table.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        jQuery.support.cors = true; // force cross-site scripting (as of jQuery 1.5)
+        function initSearch(){
+            var searchParam = System.Gadget.Settings.read('data');
+            var location = "http://localhost/projects/pdoConnection.php";
+            var data={
+                searchFilter:searchParam
+            };
+            $.post( location, data).done(function( data ) {
+                if(data!=0){
+                $.each(eval(data), function(index, item) {
+                    $('#data-Tables tbody').append('<tr><td>' + item.roomNo + '</td><td>' + item.roomName + '</td></tr>');
+                });
+                }
+                else{
+                $('#data-Tables tbody').append('<tr><td colspan="2">No Record Found Matching Your Search</td></tr>');
+                }
+                var ColorRows = document.getElementById('data-Tables').getElementsByTagName('tr');
+                for(var x = 0; x < ColorRows.length; x++) {
+                    ColorRows[x].className = (x % 2 == 0) ? 'even' : 'odd';
+                }
+                var tableHeight = document.getElementById('tblContainer').clientHeight;
+//                tableHeight = tableHeight/2;
+                $('#theBody').css('height',tableHeight);
+            });
+
+
+
+        }
+    </script>
+    
+    </head>
+
+
+    <body id="theBody" onLoad="initSearch()">
+    <g:background id="mainBackground">
+    <div id="tblContainer">
+        <div class="flyoutHead"><span>Search Results</span></div>
+    <table id="data-Tables" class="data-Tables" cellpadding=0 cellspacing=0 border=0>
+        <thead>
+        <tr>
+            <th>Room No</th>
+            <th>Room Name</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    </div>
+        </g:background>
+    </body>
+</html>

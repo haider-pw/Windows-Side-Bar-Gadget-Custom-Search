@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ---------- GENERAL ---------- */
+
+body {
+    font: 14px/1.5em "Open Sans", sans-serif;
+    margin: 0;
+}
+
+input {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.5em;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    -webkit-appearance: none;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+.clearfix { *zoom: 1; }
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after { clear: both; }
+
+.container {
+    height: 44px;
+    left: 50%;
+    margin: -22px 0 0 -141px;
+    position: absolute;
+    top: 50%;
+}
+
+/* ---------- SEARCH ---------- */
+
+#search {
+    border-radius: 3px;
+    display: inline-block;
+    padding: 3px;
+    width: 130px;
+}
+
+#search input {
+    float: left;
+}
+
+#search input[type="text"],
+#search input[type="submit"] {
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#searchBox input[type="text"] {
+    background: none repeat scroll 0 0 #fff;
+    color: #42454e;
+    min-width: 80px;
+    padding: 0px 0px;
+}
+
+#search input[type="text"]::-webkit-input-placeholder { color: #42454e; }
+#search input[type="text"]:-moz-placeholder { color: #42454e; }
+#search input[type="text"]:-ms-input-placeholder { color: #42454e; }
+
+/*-----------Custom Styling-----------*/
+#mainBackground{
+    background: url('../img/background2.png') repeat #000000;
+}
+#mainBackground table#search{
+    background: url('../img/background2.png') repeat #000000;
+    border:0px;
+    width: 100%;
+}
+#mainBackground table#copyright,#mainBackground table#copyright tbody tr td{
+    background: url('../img/customSearchFooter.png') repeat #61646d;
+    color:white;
+}
+#mainBackground table#copyright,#mainBackground table#copyright tbody tr td a{
+    color:white;
+}
+#mainBackground table#copyright tbody tr td a:hover{
+    font-weight: bold;
+}
+#mainBackground table#search .button{
+background-color:black;
+    color:white;
+    margin-left:33px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+#mainBackground table.search, #mainBackground table.search tr td{
+    background: url('../img/background2.png') repeat #000000;
+}
+#mainBackground table tr td#logoTD{
+    background: url('../img/jagu.png') repeat-x #61646d;
+    text-align: left;
+}
+#mainBackground table tr td#logoTD span{
+    color: #ccc;
+    display: inline-block;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-top: 7px;
+    text-align: left;
+}

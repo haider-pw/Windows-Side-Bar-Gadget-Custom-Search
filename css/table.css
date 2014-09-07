@@ -1,0 +1,51 @@
+#mainBackground #tblContainer{
+    display: inline-block;
+    height:100%;
+
+}
+#mainBackground div#tblContainer div.flyoutHead {
+    background: url('../img/customSearchFooter.png') repeat #61646d;
+    height: 32px;
+}
+#mainBackground div#tblContainer div.flyoutHead span {
+    color: white;
+    margin-top: 5px;
+    display: inline-block;
+    margin-left:10px;
+    font-size: 18px;
+}
+
+#mainBackground table.data-Tables{
+    border-collapse:collapse;
+    width:100%;
+    border:2px solid #1ABC9C;
+    background-image: none;
+    position:relative;
+    display: block;
+}
+#mainBackground table.data-Tables thead{
+    background:#1ABC9C;
+    color:white;
+}
+#mainBackground table.data-Tables thead th,#mainBackground table.data-Tables tbody td{
+    padding: 0;
+    padding-left: 5px;
+    line-height: 20px;
+    text-align: left;
+}
+#mainBackground table.data-Tables tbody tr.odd td{
+    background:#cccccc;
+}
+#mainBackground table.data-Tables tbody tr:nth-child(odd){
+    background:#cccccc;
+}
+#mainBackground table.data-Tables tbody tr:nth-child(even){
+    background:#ECF0F1;
+}
+#mainBackground table.data-Tables tbody tr.even td{
+    background:#ECF0F1;
+}
+#mainBackground table.data-Tables tbody tr:hover{
+    background:#BDC3C7;
+    color:#FFFFFF;
+}

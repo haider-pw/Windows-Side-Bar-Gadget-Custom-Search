@@ -1,0 +1,104 @@
+﻿<!--Copyright 2009 Unique Windows Gadgets-->
+
+<HTML>
+<HEAD>
+    <TITLE>searchALL</TITLE>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/font.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-1.11.1.min.js"></script>
+
+</HEAD>
+
+	<script language="javascript" type="text/javascript">
+        jQuery.support.cors = true; // force cross-site scripting (as of jQuery 1.5)
+        var DockedWidth = 125;
+        var UndockedWidth = 220;
+        var openInFlyout = false;
+        var currentSearchID = 1;
+        var CurrentWidth = 0;
+
+        function init()
+        {
+            System.Gadget.settingsUI = "settings.html";
+            System.Gadget.onSettingsClosed = settingsClosed;
+            // Specify the Flyout root.
+            System.Gadget.Flyout.file = "search.html";
+            System.Gadget.onDock = DockedChanged;	//no longer support in win7
+            System.Gadget.onUndock = UnDockedChanged;	//msdn.microsoft.com/en-us/library/dd370867(VS.85).aspx
+            this.document.body.style.height = 100;
+            var evenColorTR = document.getElementById('evenColorTR');
+            var ColorRows = document.getElementById('data-Tables').getElementsByTagName('tr');
+            for(var x = 0; x < ColorRows.length; x++) {
+                ColorRows[x].className = (x % 2 == 0) ? 'even' : 'odd';
+            }
+        }
+        
+        function openSearch() 
+        {
+			var searchString = document.getElementById("searchBox").value;
+            if(searchString!='' && searchString!=='Search Here'){
+            System.Gadget.Settings.write("data", searchString);
+            System.Gadget.Flyout.show = true;
+            }
+        }
+
+        function settingsClosed()
+        {
+
+        }
+
+        function DockedChanged()
+        {
+            $('#searchBox').css('width','110');
+            $('.button').css('margin-left','33px');
+            var logoTD = document.getElementById('logoTD');
+            with(document.body.style)
+                width = DockedWidth,
+                        height = 120,
+            logoTD.style.background = 'url("img/jagu.png") repeat #61646d;';
+        }
+        function UnDockedChanged()
+        {
+            $('#searchBox').css('width','200');
+            $('.button').css('margin-left','80px');
+            var logoTD = document.getElementById('logoTD');
+            with(document.body.style)
+                width = UndockedWidth,
+                height = 120,
+              logoTD.style.background = 'url("img/jagu2.png") repeat #61646d;';
+        }
+    </script>
+
+
+    <BODY onLoad="init()">
+    <g:background id="mainBackground">
+
+    <table id="search" width="100%" style="height: auto" cellpadding=0 cellspacing=0 border=0 background="transparent">
+        <tr style="height:20px;">
+            <td colspan="2" align="center" id="logoTD" valign="top"><span>Logo</span></td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div style="background: url(img/searchbox.png) 0 0 no-repeat; margin-left:3px;margin-top: 10px;">
+                <input id="searchBox" type="text" value="Search Here" style="width:110px;height:18px;border:0;margin-left:3px;margin-top:0px" onBlur="if(this.value=='')this.value='Search Here'" onFocus="if(this.value=='Search Here')this.value='' " />
+            </div></td>
+        </tr>
+        <tr>
+       <td valign="top">
+            <input type="button" class="button" value="search" onClick="openSearch()">
+        </td></tr>
+    </table>
+        <!--Copyright table Start-->
+    <table id="copyright" width="100%" height="26" align="center" cellpadding=0 cellspacing=0 border=0 style="position:relative;top:-1px;">
+        <tr>
+            <td align="center">
+                <a style="font-size:9pt;text-decoration:none;" href="#" target="_blank">pRoDevelopers Team</a>
+                <hr>
+
+            </td>
+        </tr>
+    </table>
+    </g:background>
+    </BODY>
+</HTML>
